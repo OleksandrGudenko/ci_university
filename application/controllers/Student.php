@@ -110,9 +110,14 @@ class Student extends CI_Controller {
     $this->load->model('Student_model');
     $search=$_POST['lastname'];
     $data['found_student']=$this->Student_model->get_search_result($search);
+    $success=$this->Student_model->get_search_result($search);
+    if($success){
+    $data['found_student']=$this->Student_model->get_search_result($search);
+    }
+    else{
+      $data['message']='Somethig went wrong, time to pray to god...hjdjahsdk asjdkjhd 1"#¤/!()#????';
+    }
     $data['page']='student/student_search';
     $this->load->view('menu/content',$data);
-  }
-
-
+    }
 }
